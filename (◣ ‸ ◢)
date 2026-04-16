@@ -11,11 +11,10 @@ local Window = WindUI:CreateWindow({
 local MainTab = Window:Tab({ Title = "通用功能", Icon = "lucide/layers" })
 
 -- ==========================================
--- 通用功能区
+-- 1. 玩家修改区
 -- ==========================================
-MainTab:Section({ Title = "玩家修改" })
+MainTab:Section({ Title = "基础修改" })
 
--- 1. 速度
 MainTab:Slider({
     Title = "行走速度",
     Value = {Min = 16, Max = 500, Default = 16},
@@ -26,7 +25,6 @@ MainTab:Slider({
     end
 })
 
--- 2. 跳高
 MainTab:Slider({
     Title = "跳跃高度",
     Value = {Min = 50, Max = 800, Default = 50},
@@ -38,9 +36,11 @@ MainTab:Slider({
     end
 })
 
+-- ==========================================
+-- 2. 环境视觉
+-- ==========================================
 MainTab:Section({ Title = "视觉与环境" })
 
--- 3. 夜视功能
 MainTab:Toggle({
     Title = "夜视模式",
     Callback = function(Value)
@@ -53,26 +53,37 @@ MainTab:Toggle({
 })
 
 -- ==========================================
--- 飞行功能区
+-- 3. 飞行功能区 (两个脚本已拆分)
 -- ==========================================
 MainTab:Section({ Title = "飞行功能" })
 
--- 4. 飞行脚本一
 MainTab:Button({
     Title = "开启：飞行脚本 (ROB)",
-    Desc = "点击加载第一个飞行脚本",
+    Desc = "飞行功能",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Zyb150933/ROB/refs/heads/main/ROB.FX"))()
     end
 })
 
--- 5. 飞行脚本二 (阿尔宙斯飞行)
 MainTab:Button({
     Title = "开启：阿尔宙斯飞行",
-    Desc = "备注：阿尔宙斯飞行脚本",
+    Desc = "备注：阿尔宙斯专用飞行脚本",
     Callback = function()
         loadstring(game:HttpGet('https://pastebin.com/raw/AEbFgsGv'))()
     end
 })
 
-WindUI:Notify({ Title = "加载成功", Content = "脚本已成功执行 (◣ ◢)", Duration = 3 })
+-- ==========================================
+-- 4. 脚本库 
+-- ==========================================
+MainTab:Section({ Title = "脚本" })
+
+MainTab:Button({
+    Title = "运行：皮脚本",
+    Callback = function()
+        getgenv().XiaoPi = "Pi"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xiaopi77/xiaopi77/main/QQ1002100032-Roblox-Pi-script.lua"))()
+    end
+})
+
+WindUI:Notify({ Title = "加载成功", Content = "功能已就绪！", Duration = 3 })
