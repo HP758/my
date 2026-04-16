@@ -67,7 +67,7 @@ MainTab:Button({
 
 MainTab:Button({
     Title = "开启：阿尔宙斯飞行",
-    Desc = "备注：阿尔宙斯专用飞行脚本",
+    Desc = "阿尔宙斯专用飞行脚本",
     Callback = function()
         loadstring(game:HttpGet('https://pastebin.com/raw/AEbFgsGv'))()
     end
